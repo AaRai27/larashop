@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Larashop @yield('title')</title>
     <link rel="stylesheet" href="{{asset('polished/polished.min.css')}}">
-    <link rel="stylesheet" href="{{asset('polished/iconic/css/open-iconicbootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('polished/iconic/css/open-iconic-bootstrap.min.css')}}">
 
     <style>
         .grid-highlight {
@@ -75,6 +75,11 @@
                         <a href="/home"><span class="oi oi-home"></span>
                             Home</a>
                     </li>
+                    <li>
+                        <a href="{{route('users.index')}}">
+                            <span class="oi oi-people"></span>Manage Users
+                        </a>
+                    </li>
                     <div class="d-block d-md-none">
                         <div class="dropdown-divider"></div>
                         <li><a href="#"> Profile</a></li>
@@ -87,23 +92,25 @@
                         </li>
                     </div>
                 </ul>
-                <div class="pl-3 d-none d-md-block position-fixed" style="bottom:0px">
-                    <span class="oi oi-cog"></span> Setting
-                </div>
+                {{-- <div c  --}}
             </div>
             <div class="col-lg-10 col-md-9 p-4">
                 <div class="row ">
                     <div class="col-md-12 pl-3 pt-2">
                         <div class="pl-3">
-                            <h3>@yield("pageTitle")</h3>
+                            <h3>@yield("title")</h3>
                             <br />
                         </div>
                     </div>
                 </div>
+
+
                 @yield("content")
+
+
             </div>
+            {{-- </div> --}}
         </div>
-    </div>
 </body>
 
 
