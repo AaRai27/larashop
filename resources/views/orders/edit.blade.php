@@ -13,6 +13,8 @@ Edit Order
         </div>
         @endif
     </div>
+</div>
+<div>
     <form action="{{route('orders.update',[$order->id])}}" method="POST" class="shadow-sm bg-white p-3">
         @csrf
         <input type="hidden" name="_method" value="PUT">
@@ -26,7 +28,7 @@ Edit Order
         <br>
 
         <label for="created_at">Order Date</label><br>
-        <input type="text" class="form-control" value="{{$order->crated_at}}" disabled><br>
+        <input type="text" class="form-control" value="{{$order->created_at}}" disabled><br>
 
         <label>Books {{$order->totalQuantity}}</label><br>
 

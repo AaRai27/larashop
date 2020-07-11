@@ -16,10 +16,17 @@ Create Category
 
     @csrf
     <label>Category Name</label><br>
-    <input type="text" name="name" class="form-control"><br>
+    <input type="text" name="name" class="form-control {{$errors->first('name') ? 'is-invalid' : ''}}"
+        value="{{old('name')}}">
+    <div class="invalid-feedback">
+        {{$errors->first('name')}}
+    </div><br>
 
     <label>Category Image</label>
-    <input type="file" name="image" class="form-control"><br>
+    <input type="file" name="image" class="form-control {{$errors->first('image') ? 'is-invalid' : ''}}">
+    <div class="invalid-feedback">
+        {{$errors->first('image')}}
+    </div><br>
 
     <input type="submit" class="btn btn-primary" value="Save">
 
