@@ -2,14 +2,25 @@
 
 namespace App\Http\Controllers;
 
+// use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 
 use function GuzzleHttp\json_decode;
 use function GuzzleHttp\json_encode;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Gate::allows('manage-users')) return $next($request);
+            abort('403', 'Anda Tidak Memiliki Hak Akses Pada Laman Ini');
+        });
+    }
+
     /**
      * Display a listing of the resource.
      *

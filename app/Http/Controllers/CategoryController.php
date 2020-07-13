@@ -5,10 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Validator\Rule;
+use Illuminate\Validator\Rule; //untuk validator (line 117)
+use Illuminate\Support\Facades\Gate; //untuk Gate::allows (line 17)
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Gate::allows('manage-categories')) return $next($request);
+            abort('403', 'Anda Tidak Memiliki Hak Akses Pada Laman Ini');
+        });
+    }
+
     /**
      * Display a listing of the resource.
      *
